@@ -1,0 +1,67 @@
+/* ゴーストエージェント：テレビに映しても読める、大きな数字。夜のグラウンドの色 */
+:root {
+  --bg: #10142a;
+  --surface: #1a2040;
+  --surface-2: #232a52;
+  --text: #f1f3ff;
+  --muted: #aab2dc;
+  --border: #323a6e;
+  --accent: #7ee0b5;
+  --accent-text: #0d1f17;
+  --ghost: #c7caff;
+  --slow: #ffb4a8;
+  --radius: 18px;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 18px; }
+button, select { font: inherit; color: inherit; }
+.top { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 12px 20px; border-bottom: 1px solid var(--border); }
+.brand { font-weight: 800; font-size: 1.2rem; }
+.beta { font-size: .7rem; background: var(--accent); color: var(--accent-text); padding: 1px 8px; border-radius: 999px; vertical-align: middle; }
+.motto { color: var(--muted); }
+.back { margin-left: auto; color: var(--muted); }
+.page { max-width: 1200px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+.center { text-align: center; }
+.center h1 { margin: 8px 0; }
+h2 { margin: 0 0 8px; font-size: 1.1rem; }
+.muted { color: var(--muted); }
+.small { font-size: .85rem; }
+.btn { border: none; border-radius: 999px; padding: 10px 22px; min-height: 48px; cursor: pointer; font-weight: 800; background: var(--accent); color: var(--accent-text); text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn.big { min-height: 64px; font-size: 1.3rem; padding: 10px 30px; }
+.btn.ghost-btn { background: var(--surface-2); color: var(--text); }
+.btn:disabled { opacity: .4; cursor: default; }
+.btn:focus-visible, select:focus-visible, .link:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.key { font-size: .7rem; font-weight: 600; opacity: .7; border: 1px solid currentColor; border-radius: 6px; padding: 0 6px; }
+
+.board { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 16px; }
+@media (max-width: 800px) { .board { grid-template-columns: 1fr; } }
+.run .label { margin: 0; font-size: 1.1rem; font-weight: 700; }
+.timer { font-size: clamp(4rem, 14vw, 9rem); font-weight: 800; margin: 0; line-height: 1.1; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.track { position: relative; height: 64px; margin: 12px 0; }
+.track-line { position: absolute; left: 0; right: 0; top: 50%; height: 8px; margin-top: -4px; border-radius: 999px; background: linear-gradient(90deg, var(--surface-2), var(--ghost)); opacity: .5; }
+.ghost-dot { position: absolute; top: 4px; left: 0; width: 56px; height: 56px; transform: translateX(-50%); transition: left .1s linear; }
+.gap { font-size: 1.5rem; font-weight: 800; margin: 0 0 12px; min-height: 1.6em; }
+.gap.ahead { color: var(--accent); }
+.gap.behind { color: var(--slow); }
+.controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.compare { display: grid; gap: 10px; align-content: start; }
+.cell { background: var(--surface-2); border-radius: 14px; padding: 10px 14px; }
+.cell p { margin: 0; }
+.num { font-size: 2.2rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.num.ahead { color: var(--accent); }
+.num.behind { color: var(--slow); }
+.lines { list-style: none; margin: 0 0 10px; padding: 0; display: grid; gap: 10px; }
+.line { display: flex; gap: 12px; align-items: center; }
+.line img { width: 48px; height: 48px; flex: none; }
+.line p { margin: 0; font-size: 1.15rem; }
+.laps { margin: 0; padding-left: 1.6em; columns: 3; font-variant-numeric: tabular-nums; font-size: 1.1rem; }
+.laps .pb { color: var(--accent); font-weight: 800; }
+.row { display: flex; gap: 16px; flex-wrap: wrap; }
+.settings select { background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; min-height: 44px; margin-left: 6px; }
+.link { background: none; border: none; color: var(--slow); text-decoration: underline; cursor: pointer; padding: 0 0 0 8px; }
+.error { color: var(--slow); font-weight: 700; min-height: 1.4em; margin: 6px 0 0; }
+@media (prefers-reduced-motion: reduce) { .ghost-dot { transition: none; } }

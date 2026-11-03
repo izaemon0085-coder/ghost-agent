@@ -1,0 +1,15 @@
+{
+  "name": "ghost-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ゴーストエージェント（β版）：昨日の自分と競う。ラップを計って、テレビに今日・昨日・差を出す。ともはねとつながる",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test test/"
+  }
+}

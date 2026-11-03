@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゴーストエージェント β版</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="top">
+    <span class="brand">👻 ゴーストエージェント <span class="beta">β版</span></span>
+    <span class="motto">昨日の自分を、ちょっと超える。</span>
+    <a class="back" id="back" href="#">← ともはねにもどる</a>
+  </header>
+
+  <main class="page">
+    <section class="card center" id="signin" hidden>
+      <img src="/avatars/ghost.svg" alt="" width="96" height="96">
+      <h1>もう一人の自分と、走ろう</h1>
+      <p>自分の自己ベストが「ゴースト」になって、一緒に走ります。競う相手は、昨日の自分。</p>
+      <a class="btn big" id="signin-link" href="#">ともはねでログイン</a>
+      <p class="muted small">ともはねに知らせるのは「自己ベストを更新した回数」と「続けた日数」だけ。ラップの記録は、ここだけに残ります。</p>
+    </section>
+
+    <div id="app" hidden>
+      <section class="board">
+        <!-- 走る画面（テレビに映す） -->
+        <div class="card run">
+          <p class="label"><span id="activity"></span>　<span class="muted" id="session-info"></span></p>
+          <p class="timer" id="timer" aria-live="off">0.00</p>
+          <div class="track" aria-hidden="true">
+            <div class="track-line"></div>
+            <img class="ghost-dot" id="ghost-dot" src="/avatars/ghost.svg" alt="">
+          </div>
+          <p class="gap" id="gap" aria-live="polite">スタートを押してね</p>
+          <div class="controls">
+            <button type="button" class="btn big" id="start">スタート</button>
+            <button type="button" class="btn big lap" id="lap" disabled>1周！<span class="key">スペース</span></button>
+            <button type="button" class="btn ghost-btn" id="stop" disabled>おわり</button>
+          </div>
+        </div>
+        <!-- 今日・昨日・差 -->
+        <div class="card compare">
+          <div class="cell"><p class="muted">自己ベスト（ゴースト）</p><p class="num" id="best">－</p></div>
+          <div class="cell"><p class="muted">今日のベスト</p><p class="num" id="today">－</p></div>
+          <div class="cell"><p class="muted">昨日のベスト</p><p class="num" id="yesterday">－</p></div>
+          <div class="cell"><p class="muted">昨日との差</p><p class="num" id="diff">－</p></div>
+        </div>
+      </section>
+
+      <section class="card talk" aria-live="polite">
+        <ul class="lines" id="lines"><li class="line"><img src="/avatars/ghost.svg" alt=""><p>やあ。ぼくは、きみの自己ベスト。いっしょに走ろう。</p></li></ul>
+        <a class="btn" id="share" hidden target="_blank" rel="noopener">ともはねの広場で知らせる</a>
+      </section>
+
+      <section class="card">
+        <h2>今日のラップ</h2>
+        <ol class="laps" id="laps"></ol>
+      </section>
+
+      <section class="card settings">
+        <h2>せってい</h2>
+        <div class="row">
+          <label>種目 <select id="set-activity"></select></label>
+          <label>やさしさの強さ <select id="set-tone"></select></label>
+        </div>
+        <p class="muted small">記録は、あなたのものです。ほかの人には見せません。<button type="button" class="link" id="delete">記録を全部消す</button></p>
+        <p class="error" id="error" role="alert"></p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
